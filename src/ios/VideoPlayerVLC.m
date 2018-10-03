@@ -20,10 +20,10 @@
         self.player = [[VideoPlayerVLCViewController alloc] init];
         self.player.urlString = urlString;
         
-        [self.viewController presentViewController:self.player animated:YES completion:nil];
+        [self.viewController presentViewController:self.player animated:NO completion:nil];
+
         pluginResult = [CDVPluginResult resultWithStatus:CDVCommandStatus_OK  messageAsBool:true];
         [self.commandDelegate sendPluginResult:pluginResult callbackId: command.callbackId];
-
     }
     else
     {
@@ -38,11 +38,13 @@
 	[self.player stop];
 
     // dismiss view from stack
-    [self.viewController dismissViewControllerAnimated:YES completion:nil];
+    [[self.player presentingViewController] dismissViewControllerAnimated:NO completion:nil];
     
     CDVPluginResult *pluginResult = nil;
     pluginResult = [CDVPluginResult resultWithStatus:CDVCommandStatus_OK  messageAsBool:true];
     [self.commandDelegate sendPluginResult:pluginResult callbackId: command.callbackId];
+
+    self.player = nil;
 }
 
 @end
