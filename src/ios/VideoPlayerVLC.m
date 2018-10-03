@@ -34,11 +34,6 @@
 }
 
 -(void) stop:(CDVInvokedUrlCommand *) command {
-    NSString *urlString  = [command.arguments objectAtIndex:0 withDefault:nil];
-
-    if ([urlString length] != 0) {
-        [[[UIAlertView alloc] initWithTitle:@"Stop received" message:urlString delegate:nil cancelButtonTitle:@"OK" otherButtonTitles:nil, nil] show];
-    }
     
     if (self.player != nil) {
 
