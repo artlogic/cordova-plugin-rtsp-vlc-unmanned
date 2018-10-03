@@ -21,13 +21,13 @@
         self.player.urlString = urlString;
         
         [self.viewController presentViewController:self.player animated:YES completion:nil];
-        pluginResult = [CDVPluginResult resultWithStatus:CDVCommandStatus_OK messageAsString:@"started"];
+        pluginResult = [CDVPluginResult resultWithStatus:CDVCommandStatus_OK  messageAsBool:true];
         [self.commandDelegate sendPluginResult:pluginResult callbackId: command.callbackId];
 
     }
     else
     {
-        pluginResult = [CDVPluginResult resultWithStatus:CDVCommandStatus_ERROR messageAsString:@"invalid url"];
+        pluginResult = [CDVPluginResult resultWithStatus:CDVCommandStatus_ERROR messageAsString:@"url.invalid"];
         [self.commandDelegate sendPluginResult:pluginResult callbackId: command.callbackId];
     }
 
@@ -41,7 +41,7 @@
     [self.viewController dismissViewControllerAnimated:YES completion:nil];
     
     CDVPluginResult *pluginResult = nil;
-    pluginResult = [CDVPluginResult resultWithStatus:CDVCommandStatus_OK messageAsString:@"stopped"];
+    pluginResult = [CDVPluginResult resultWithStatus:CDVCommandStatus_OK  messageAsBool:true];
     [self.commandDelegate sendPluginResult:pluginResult callbackId: command.callbackId];
 }
 

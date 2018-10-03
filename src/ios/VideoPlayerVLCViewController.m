@@ -32,18 +32,18 @@
     self.mediaView = [[UIView alloc] init];
     self.mediaPlayer = [[VLCMediaPlayer alloc] initWithOptions:@[@"--network-caching=150 --clock-jitter=0 --clock-synchro=0"]];
         
-    self.mediaView.translatesAutoresizingMaskIntoConstraints = NO;
+    // self.mediaView.translatesAutoresizingMaskIntoConstraints = NO;
     self.mediaView.backgroundColor = [UIColor blackColor];
     
     [self.view addSubview:self.mediaView];
     
-    NSLayoutConstraint *mediaViewWidthConstraint = [NSLayoutConstraint constraintWithItem:self.mediaView attribute:NSLayoutAttributeWidth relatedBy:NSLayoutRelationEqual toItem:self.view attribute:NSLayoutAttributeWidth multiplier:1.0 constant:0];
-    NSLayoutConstraint *mediaViewHeightConstraint = [NSLayoutConstraint constraintWithItem:self.mediaView attribute:NSLayoutAttributeHeight relatedBy:NSLayoutRelationEqual toItem:self.view attribute:NSLayoutAttributeHeight multiplier:1.0 constant:0];
-    NSLayoutConstraint *mediaViewCenterHorizontallyConstraint = [NSLayoutConstraint constraintWithItem:self.mediaView attribute:NSLayoutAttributeCenterX relatedBy:NSLayoutRelationEqual toItem:self.view attribute:NSLayoutAttributeCenterX multiplier:1.0 constant:0];
+    // NSLayoutConstraint *mediaViewWidthConstraint = [NSLayoutConstraint constraintWithItem:self.mediaView attribute:NSLayoutAttributeWidth relatedBy:NSLayoutRelationEqual toItem:self.view attribute:NSLayoutAttributeWidth multiplier:1.0 constant:0];
+    // NSLayoutConstraint *mediaViewHeightConstraint = [NSLayoutConstraint constraintWithItem:self.mediaView attribute:NSLayoutAttributeHeight relatedBy:NSLayoutRelationEqual toItem:self.view attribute:NSLayoutAttributeHeight multiplier:1.0 constant:0];
+    // NSLayoutConstraint *mediaViewCenterHorizontallyConstraint = [NSLayoutConstraint constraintWithItem:self.mediaView attribute:NSLayoutAttributeCenterX relatedBy:NSLayoutRelationEqual toItem:self.view attribute:NSLayoutAttributeCenterX multiplier:1.0 constant:0];
     
-    [self.view addConstraint:mediaViewWidthConstraint];
-    [self.view addConstraint:mediaViewHeightConstraint];
-    [self.view addConstraint:mediaViewCenterHorizontallyConstraint];
+    // [self.view addConstraint:mediaViewWidthConstraint];
+    // [self.view addConstraint:mediaViewHeightConstraint];
+    // [self.view addConstraint:mediaViewCenterHorizontallyConstraint];
     
     self.mediaPlayer.drawable = self.mediaView;    
 }
