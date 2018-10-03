@@ -20,7 +20,7 @@
         self.player = [[VideoPlayerVLCViewController alloc] init];
         self.player.urlString = urlString;
         
-        [self.viewController presentViewController:self.player animated:NO completion:nil];
+        [self.viewController addChildViewController:self.player];
 
         pluginResult = [CDVPluginResult resultWithStatus:CDVCommandStatus_OK  messageAsBool:true];
         [self.commandDelegate sendPluginResult:pluginResult callbackId: command.callbackId];
@@ -40,7 +40,7 @@
         [self.player stop];
 
         // dismiss view from stack
-        [[self.player presentingViewController] dismissViewControllerAnimated:NO completion:nil];
+        [self.player removeFromParentViewController];
         
         CDVPluginResult *pluginResult = nil;
         pluginResult = [CDVPluginResult resultWithStatus:CDVCommandStatus_OK  messageAsBool:true];
