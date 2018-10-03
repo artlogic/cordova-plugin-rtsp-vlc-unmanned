@@ -13,9 +13,9 @@
     
     
     CDVPluginResult *pluginResult = nil;
-    NSString *urlString  = [command.arguments objectAtIndex:0];
+    NSString *urlString  = [command.arguments objectAtIndex:0 withDefault:nil];
     
-    if (urlString != nil) {
+    if ([urlString length] == 0) {
 
         self.player = [[VideoPlayerVLCViewController alloc] init];
         self.player.urlString = urlString;
@@ -33,18 +33,27 @@
 
 }
 
--(void) stop:(CDVInvokedUrlCommand *)command{
-        
-	[self.player stop];
+-(void) stop:(CDVInvokedUrlCommand *) command {
+    NSString *urlString  = [command.arguments objectAtIndex:0 withDefault:nil];
 
-    // dismiss view from stack
-    [[self.player presentingViewController] dismissViewControllerAnimated:NO completion:nil];
+    if ([urlString length] != 0) {
+        [[[UIAlertView alloc] initWithTitle:@"Stop received" message:urlString delegate:nil cancelButtonTitle:@"OK" otherButtonTitles:nil, nil] show];
+    }
     
-    CDVPluginResult *pluginResult = nil;
-    pluginResult = [CDVPluginResult resultWithStatus:CDVCommandStatus_OK  messageAsBool:true];
-    [self.commandDelegate sendPluginResult:pluginResult callbackId: command.callbackId];
+    if (self.player != nil) {
 
-    self.player = nil;
+        [self.player stop];
+
+        // dismiss view from stack
+        [[self.player presentingViewController] dismissViewControllerAnimated:NO completion:nil];
+        
+        CDVPluginResult *pluginResult = nil;
+        pluginResult = [CDVPluginResult resultWithStatus:CDVCommandStatus_OK  messageAsBool:true];
+        [self.commandDelegate sendPluginResult:pluginResult callbackId: command.callbackId];
+
+        self.player = nil;
+    }
+    
 }
 
 @end

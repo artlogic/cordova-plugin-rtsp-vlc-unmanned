@@ -16,18 +16,6 @@
 
 @implementation VideoPlayerVLCViewController
 
-- (UIInterfaceOrientation)preferredInterfaceOrientationForPresentation {
-    return UIInterfaceOrientationLandscapeRight; // or LandscapeLeft
-}
-
-- (UIInterfaceOrientationMask)supportedInterfaceOrientations {
-    return UIInterfaceOrientationMaskLandscape;
-}
-
--(BOOL)shouldAutorotate{
-    return NO;
-}
-
 -(id)init{
     if (self = [super init]){
         self.playOnStart = YES;

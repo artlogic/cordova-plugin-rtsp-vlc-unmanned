@@ -24,7 +24,7 @@ module.exports = {
   play: function(uri, success, failure) {
     exec(success, failure, "VideoPlayerVLC", "play", [uri]);
   },
-  stop: function(success, failure) {
-    exec(success, failure, "VideoPlayerVLC", "stop", []);
+  stop: function(message, success, failure) {
+    exec(success, failure, "VideoPlayerVLC", "stop", [message]);
   }
 };
