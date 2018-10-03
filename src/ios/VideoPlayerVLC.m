@@ -13,9 +13,9 @@
     
     
     CDVPluginResult *pluginResult = nil;
-    NSString *urlString  = [command.arguments objectAtIndex:0 withDefault:nil];
+    NSString *urlString  = [command.arguments objectAtIndex:0];
     
-    if ([urlString length] == 0) {
+    if (urlString != nil) {
 
         self.player = [[VideoPlayerVLCViewController alloc] init];
         self.player.urlString = urlString;
