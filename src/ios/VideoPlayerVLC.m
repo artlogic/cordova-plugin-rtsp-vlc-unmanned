@@ -11,45 +11,38 @@
 @implementation VideoPlayerVLC
 -(void) play:(CDVInvokedUrlCommand *)command{
     
-    self.lastCommand = command;
-    
     
     CDVPluginResult *pluginResult = nil;
     NSString *urlString  = [command.arguments objectAtIndex:0];
     
-    if(urlString != nil){
-        // we use that to respond to the plugin when it finishes
-        self.lastCommand = command;
+    if (urlString != nil) {
+
+        self.player = [[VideoPlayerVLCViewController alloc] init];
+        self.player.urlString = urlString;
         
-        self.overlay = [[VideoPlayerVLCViewController alloc] init];
-        self.overlay.urlString = urlString;
-        
-        // on the view controller make a reference to this class
-        self.overlay.origem = self;
-        
-        [self.viewController presentViewController:self.overlay animated:YES completion:nil];
+        [self.viewController presentViewController:self.player animated:YES completion:nil];
+        pluginResult = [CDVPluginResult resultWithStatus:CDVCommandStatus_OK messageAsString:@"started"];
+        [self.commandDelegate sendPluginResult:pluginResult callbackId: command.callbackId];
 
     }
     else
     {
-        pluginResult = [CDVPluginResult resultWithStatus:CDVCommandStatus_ERROR];
+        pluginResult = [CDVPluginResult resultWithStatus:CDVCommandStatus_ERROR messageAsString:@"invalid url"];
         [self.commandDelegate sendPluginResult:pluginResult callbackId: command.callbackId];
     }
 
 }
 
--(void) finishOkAndDismiss{
-    
-    // End the execution
-    CDVPluginResult *pluginResult = nil;
-    
-    pluginResult = [CDVPluginResult resultWithStatus:CDVCommandStatus_OK messageAsString:@"onDestroyVlc"];
-    [self.commandDelegate sendPluginResult:pluginResult callbackId: self.lastCommand.callbackId];
-    
+-(void) stop:(CDVInvokedUrlCommand *)command{
+        
+	[self.player stop];
+
     // dismiss view from stack
     [self.viewController dismissViewControllerAnimated:YES completion:nil];
     
-
+    CDVPluginResult *pluginResult = nil;
+    pluginResult = [CDVPluginResult resultWithStatus:CDVCommandStatus_OK messageAsString:@"stopped"];
+    [self.commandDelegate sendPluginResult:pluginResult callbackId: command.callbackId];
 }
 
 @end
