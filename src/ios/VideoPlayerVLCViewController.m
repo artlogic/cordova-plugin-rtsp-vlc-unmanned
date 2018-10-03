@@ -83,6 +83,7 @@
         if(self.mediaPlayer.isPlaying){
             [self.mediaPlayer stop];
         }
+        self.mediaPlayer = nil;
     }
 }
 
