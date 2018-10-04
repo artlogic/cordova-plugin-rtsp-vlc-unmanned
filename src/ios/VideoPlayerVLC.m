@@ -16,41 +16,52 @@
     NSString *urlString  = [command.arguments objectAtIndex:0];
     
     if (urlString != nil) {
-
-        self.player = [[VideoPlayerVLCViewController alloc] init];
-        self.player.urlString = urlString;
-        
-        [self.viewController addChildViewController:self.player];
-        
-        [self.webView.superview insertSubview:self.player.view aboveSubview:self.webView];
-        pluginResult = [CDVPluginResult resultWithStatus:CDVCommandStatus_OK  messageAsBool:true];
-        [self.commandDelegate sendPluginResult:pluginResult callbackId: command.callbackId];
+        @try {
+            self.player = [[VideoPlayerVLCViewController alloc] init];
+            self.player.urlString = urlString;
+            
+            [self.viewController addChildViewController:self.player];
+            
+            [self.webView.superview insertSubview:self.player.view aboveSubview:self.webView];
+            pluginResult = [CDVPluginResult resultWithStatus:CDVCommandStatus_OK  messageAsBool:true];
+            [self.commandDelegate sendPluginResult:pluginResult callbackId: command.callbackId];
+        }
+        @catch (NSException *exception) {
+            pluginResult = [CDVPluginResult resultWithStatus:CDVCommandStatus_ERROR messageAsString:exception.reason];
+        }
     }
     else
     {
-        pluginResult = [CDVPluginResult resultWithStatus:CDVCommandStatus_ERROR messageAsString:@"url.invalid"];
-        [self.commandDelegate sendPluginResult:pluginResult callbackId: command.callbackId];
+        pluginResult = [CDVPluginResult resultWithStatus:CDVCommandStatus_ERROR messageAsString:@"url-invalid"];
     }
 
+    [self.commandDelegate sendPluginResult:pluginResult callbackId: command.callbackId];
 }
 
 -(void) stop:(CDVInvokedUrlCommand *) command {
     
+    CDVPluginResult *pluginResult = nil;
     if (self.player != nil) {
+        @try {
 
-        [self.player stop];
+            [self.player stop];
 
-        // dismiss view from stack
-        [self.player.view removeFromSuperview];
-        [self.player removeFromParentViewController];
-        
-        CDVPluginResult *pluginResult = nil;
-        pluginResult = [CDVPluginResult resultWithStatus:CDVCommandStatus_OK  messageAsBool:true];
-        [self.commandDelegate sendPluginResult:pluginResult callbackId: command.callbackId];
+            // dismiss view from stack
+            [self.player.view removeFromSuperview];
+            [self.player removeFromParentViewController];
+            
+            pluginResult = [CDVPluginResult resultWithStatus:CDVCommandStatus_OK  messageAsBool:true];
 
-        self.player = nil;
+            self.player = nil;
+        }
+        @catch (NSException *exception) {
+            pluginResult = [CDVPluginResult resultWithStatus:CDVCommandStatus_ERROR messageAsString:exception.reason];
+        }
+    } else {
+        pluginResult = [CDVPluginResult resultWithStatus:CDVCommandStatus_ERROR messageAsString:@"not-playing"];
     }
     
+    [self.commandDelegate sendPluginResult:pluginResult callbackId: command.callbackId];
 }
 
 @end
