@@ -21,6 +21,13 @@ window.VideoPlayerVLC.play(
 );
 ```
 
+```
+window.VideoPlayerVLC.stop(
+	 done => {},
+	 error => {}
+);
+```
+
 ## Response
 
 done: string - "onDestroyVlc"
