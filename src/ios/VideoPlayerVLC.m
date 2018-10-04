@@ -9,7 +9,7 @@
 
 
 @implementation VideoPlayerVLC
--(void) play:(CDVInvokedUrlCommand *)command{
+-(void) play:(CDVInvokedUrlCommand *) command {
     
     
     CDVPluginResult *pluginResult = nil;
@@ -23,7 +23,7 @@
             [self.viewController addChildViewController:self.player];
             
             [self.webView.superview insertSubview:self.player.view aboveSubview:self.webView];
-            pluginResult = [CDVPluginResult resultWithStatus:CDVCommandStatus_OK  messageAsBool:true];
+            pluginResult = [CDVPluginResult resultWithStatus:CDVCommandStatus_OK messageAsBool:true];
             [self.commandDelegate sendPluginResult:pluginResult callbackId: command.callbackId];
         }
         @catch (NSException *exception) {
@@ -50,7 +50,7 @@
             [self.player.view removeFromSuperview];
             [self.player removeFromParentViewController];
             
-            pluginResult = [CDVPluginResult resultWithStatus:CDVCommandStatus_OK  messageAsBool:true];
+            pluginResult = [CDVPluginResult resultWithStatus:CDVCommandStatus_OK messageAsBool:true];
 
             self.player = nil;
         }
