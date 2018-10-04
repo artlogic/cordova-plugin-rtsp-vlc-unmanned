@@ -16,21 +16,18 @@
 ```
 window.VideoPlayerVLC.play(
 	 url,
-	 done => {},
-	 error => {}
+	 (done: boolean) => { },
+	 (error: string) => { }
 );
 ```
 
 ```
 window.VideoPlayerVLC.stop(
-	 done => {},
-	 error => {}
+	 (done: boolean) => { },
+	 (error: string) => { }
 );
 ```
 
-## Response
-
-done: string - "onDestroyVlc"
 
 ## Example:
 
