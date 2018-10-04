@@ -21,7 +21,8 @@
         self.player.urlString = urlString;
         
         [self.viewController addChildViewController:self.player];
-
+        
+        [self.webView.superview insertSubview:self.player.view aboveSubview:self.webView];
         pluginResult = [CDVPluginResult resultWithStatus:CDVCommandStatus_OK  messageAsBool:true];
         [self.commandDelegate sendPluginResult:pluginResult callbackId: command.callbackId];
     }
@@ -40,6 +41,7 @@
         [self.player stop];
 
         // dismiss view from stack
+        [self.player.view removeFromSuperview];
         [self.player removeFromParentViewController];
         
         CDVPluginResult *pluginResult = nil;
