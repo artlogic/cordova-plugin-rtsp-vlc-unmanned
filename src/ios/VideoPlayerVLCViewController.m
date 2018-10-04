@@ -51,7 +51,13 @@
 - (void)viewDidAppear:(BOOL)animated{
     [super viewDidAppear:animated];
     if (self.playOnStart) {
-        if(self.mediaPlayer.media == nil){
+        [self play];
+    }
+}
+
+- (void)play{
+    if (self.mediaPlayer != nil) {
+        if (!self.mediaPlayer.isPlaying) {
             NSURL *mediaUrl = [[NSURL alloc] initWithString:self.urlString];
             if(mediaUrl != nil){
                 [self.mediaPlayer setMedia:[[VLCMedia alloc] initWithURL:mediaUrl]];
@@ -60,18 +66,16 @@
                 [[[UIAlertView alloc] initWithTitle:@"Error" message:@"Invalid URL" delegate:nil cancelButtonTitle:@"OK" otherButtonTitles:nil, nil] show];
                 return;
             }
+            [self.mediaPlayer play];
         }
-        [self.mediaPlayer play];
     }
 }
 
-
 - (void)stop{
-    if(self.mediaPlayer != nil){
-        if(self.mediaPlayer.isPlaying){
+    if (self.mediaPlayer != nil) {
+        if (self.mediaPlayer.isPlaying) {
             [self.mediaPlayer stop];
         }
-        self.mediaPlayer = nil;
     }
 }
 

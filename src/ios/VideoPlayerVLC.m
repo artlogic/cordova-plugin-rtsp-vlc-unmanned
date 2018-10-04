@@ -17,12 +17,18 @@
     
     if (urlString != nil) {
         @try {
-            self.player = [[VideoPlayerVLCViewController alloc] init];
-            self.player.urlString = urlString;
+            if (self.player == nil) {
+                self.player = [[VideoPlayerVLCViewController alloc] init];
+                self.player.urlString = urlString;
+            }
             
             [self.viewController addChildViewController:self.player];
             
             [self.webView.superview insertSubview:self.player.view aboveSubview:self.webView];
+
+            [self.player play];
+
+
             pluginResult = [CDVPluginResult resultWithStatus:CDVCommandStatus_OK messageAsBool:true];
             [self.commandDelegate sendPluginResult:pluginResult callbackId: command.callbackId];
         }
@@ -51,8 +57,6 @@
             [self.player removeFromParentViewController];
             
             pluginResult = [CDVPluginResult resultWithStatus:CDVCommandStatus_OK messageAsBool:true];
-
-            self.player = nil;
         }
         @catch (NSException *exception) {
             pluginResult = [CDVPluginResult resultWithStatus:CDVCommandStatus_ERROR messageAsString:exception.reason];

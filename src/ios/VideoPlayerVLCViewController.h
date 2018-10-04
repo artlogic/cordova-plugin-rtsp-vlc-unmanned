@@ -12,6 +12,7 @@
 @property(nonatomic) BOOL playOnStart;
 @property(strong, nonatomic) NSString *urlString;
 
+-(void) play;
 -(void) stop;
 
 @end
