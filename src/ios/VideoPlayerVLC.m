@@ -19,8 +19,9 @@
         @try {
             if (self.player == nil) {
                 self.player = [[VideoPlayerVLCViewController alloc] init];
-                self.player.urlString = urlString;
             }
+            
+            self.player.urlString = urlString;
             
             [self.viewController addChildViewController:self.player];
             
