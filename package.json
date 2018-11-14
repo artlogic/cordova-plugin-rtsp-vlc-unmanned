@@ -1,6 +1,6 @@
 {
   "name": "@cactusoft/cordova-plugin-rtsp-vlc",
-  "version": "1.0.1",
+  "version": "1.1.0",
   "description": "Cordova RTSP player",
   "cordova": {
     "id": "@cactusoft/cordova-plugin-rtsp-vlc",
