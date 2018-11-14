@@ -4,7 +4,7 @@
 
 ## Installation
 
-    cordova plugin add cordova-pluging-rtsp-vlc-unmanned
+    cordova plugin add cordova-plugin-rtsp-vlc-unmanned
 
 ## Supported Platforms
 
