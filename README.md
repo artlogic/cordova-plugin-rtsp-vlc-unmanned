@@ -4,7 +4,7 @@
 
 ## Installation
 
-    cordova plugin add cordova-plugin-rtsp-vlc
+    cordova plugin add @cactusoft/cordova-plugin-rtsp-vlc
 
 ## Supported Platforms
 
