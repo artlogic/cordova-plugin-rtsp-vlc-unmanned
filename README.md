@@ -4,7 +4,7 @@
 
 ## Installation
 
-    cordova plugin add @cactusoft/cordova-plugin-rtsp-vlc
+    cordova plugin add cordova-pluging-rtsp-vlc-unmanned
 
 ## Supported Platforms
 

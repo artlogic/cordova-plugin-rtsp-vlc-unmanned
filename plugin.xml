@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <plugin xmlns="http://apache.org/cordova/ns/plugins/1.0"
 		xmlns="http://schemas.android.com/apk/res/android"
-		id="@cactusoft/cordova-plugin-rtsp-vlc"
+		id="cordova-pluging-rtsp-vlc-unmanned"
 		version="3.0.0">
 
 		<name>vlcstreamplayer</name>
@@ -13,7 +13,6 @@
 		<js-module src="www/VideoPlayerVLC.js" name="VideoPlayerVLC">
 			<clobbers target="window.VideoPlayerVLC" />
 		</js-module>
-
 
 		<platform name="android">	
 			<framework src="src/android/build.gradle" custom="true" type="gradleReference" />
@@ -67,7 +66,7 @@
             <source-file src="src/ios/VideoPlayerVLC.m" />
             <header-file src="src/ios/VideoPlayerVLCViewController.h" />
             <source-file src="src/ios/VideoPlayerVLCViewController.m" />
-            <framework src="MobileVLCKit" type="podspec" spec="3.1.5" />
+            <framework src="MobileVLCKit" type="podspec" spec=">3.1.0" />
             <framework src="/usr/lib/libbz2.dylib" />
             <framework src="/usr/lib/libiconv.dylib" />
             <framework src="/usr/lib/libstdc++.dylib" />

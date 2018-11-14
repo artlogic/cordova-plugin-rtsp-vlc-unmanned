@@ -1,9 +1,9 @@
 {
-  "name": "@cactusoft/cordova-plugin-rtsp-vlc",
+  "name": "cordova-pluging-rtsp-vlc-unmanned",
   "version": "1.1.0",
   "description": "Cordova RTSP player",
   "cordova": {
-    "id": "@cactusoft/cordova-plugin-rtsp-vlc",
+    "id": "cordova-pluging-rtsp-vlc-unmanned",
     "platforms": [
       "ios",
       "android"
