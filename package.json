@@ -1,9 +1,9 @@
 {
-  "name": "cordova-plugin-rtsp-vlc",
-  "version": "3.0.1",
+  "name": "@cactusoft/cordova-plugin-rtsp-vlc",
+  "version": "1.0.0",
   "description": "Cordova RTSP player",
   "cordova": {
-    "id": "cordova-plugin-rtsp-vlc",
+    "id": "@cactusoft/cordova-plugin-rtsp-vlc",
     "platforms": [
       "ios",
       "android"
@@ -11,7 +11,7 @@
   },
   "repository": {
     "type": "git",
-    "url": "https://github.com/dride/cordova-plugin-rtsp-vlc.git"
+    "url": "https://github.com/cactusoft-ca/cordova-plugin-rtsp-vlc.git"
   },
   "keywords": [
     "ecosystem:cordova",
@@ -28,10 +28,10 @@
       "version": ">=3.0.0"
     }
   ],
-  "author": "Saoron",
-  "license": "Apache-2.0",
+  "author": "Cactusoft",
+  "license": "MIT",
   "bugs": {
-    "url": "https://github.com/dride/cordova-plugin-rtsp-vlc/issues"
+    "url": "https://github.com/cactusoft-ca/cordova-plugin-rtsp-vlc/issues"
   },
-  "homepage": "https://github.com/dride/cordova-plugin-rtsp-vlc#readme"
+  "homepage": "https://github.com/cactusoft-ca/cordova-plugin-rtsp-vlc#readme"
 }
